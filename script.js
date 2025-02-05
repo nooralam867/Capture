@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyBacs-f252IdAP2qfK0Tja56BPI0jyZoeM'; // Replace with your actual API key
+const apiKey = 'AIzaSyDLEx9bvCCmyhRuTCl4VijpJMTPTz5UlpA'; // Replace with your actual API key
 
 async function processImages() {
     const fileInput = document.getElementById('fileInput');

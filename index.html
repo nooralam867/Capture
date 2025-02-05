@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capture Full Screen Screenshot</title>
+  <!-- Include html2canvas library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #screenshot-frame {
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      max-width: 100%;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Capture Full Screen Screenshot</h1>
+  <button id="capture-btn">Capture Screenshot</button>
+  <div id="screenshot-container">
+    <img id="screenshot-frame" src="#" alt="Screenshot will appear here" style="display:none;" />
+  </div>
+
+  <script>
+    // Add event listener to the button
+    document.getElementById('capture-btn').addEventListener('click', function() {
+      // Capture the entire screen
+      html2canvas(document.body).then(function(canvas) {
+        // Convert the canvas to a data URL (image)
+        var screenshot = canvas.toDataURL('image/png');
+
+        // Display the screenshot in the frame
+        var screenshotFrame = document.getElementById('screenshot-frame');
+        screenshotFrame.src = screenshot;
+        screenshotFrame.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

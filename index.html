@@ -1,65 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capture Full Webpage Screenshot</title>
-  <!-- Include html2canvas library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    #screenshot-frame {
-      margin-top: 20px;
-      border: 2px solid #ccc;
-      max-width: 100%;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    .content {
-      height: 200vh; /* Example of a long webpage */
-      background: linear-gradient(to bottom, #f06, white);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Solver using Gemini Pro Vision</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Capture Full Webpage Screenshot</h1>
-  <div class="content">
-    <p>This is a long webpage. Scroll down to see more content.</p>
-  </div>
-  <button id="capture-btn">Capture Screenshot</button>
-  <div id="screenshot-container">
-    <img id="screenshot-frame" src="#" alt="Screenshot will appear here" style="display:none;" />
-  </div>
-
-  <script>
-    // Add event listener to the button
-    document.getElementById('capture-btn').addEventListener('click', function() {
-      // Capture the entire webpage (including scrolled content)
-      html2canvas(document.documentElement, {
-        scrollY: -window.scrollY, // Adjust for current scroll position
-        windowWidth: document.documentElement.scrollWidth,
-        windowHeight: document.documentElement.scrollHeight,
-      }).then(function(canvas) {
-        // Convert the canvas to a data URL (image)
-        var screenshot = canvas.toDataURL('image/png');
-
-        // Display the screenshot in the frame
-        var screenshotFrame = document.getElementById('screenshot-frame');
-        screenshotFrame.src = screenshot;
-        screenshotFrame.style.display = 'block';
-      });
-    });
-  </script>
+    <div class="container">
+        <h1>Upload MCQ Images</h1>
+        <input type="file" id="fileInput" multiple accept="image/jpeg">
+        <button onclick="processImages()">Submit</button>
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
